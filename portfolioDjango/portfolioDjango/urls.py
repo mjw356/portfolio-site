@@ -1,3 +1,4 @@
+from django.contrib import admin
 from django.urls import include, path
 from rest_framework import routers
 
@@ -9,6 +10,11 @@ from portfolioApi import views
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.
 urlpatterns = [
+    path("admin/", admin.site.urls),
+    path("signup/", views.SignUp.as_view()),
+    path("login/", views.Login.as_view()),
+    path("tokentest/", views.TokenTest.as_view()),
+    path('categories/', views.CategoryList.as_view()),
     path('posts/', views.PostList.as_view()),
     path('posts/<int:pk>/', views.PostDetail.as_view()),
     path('users/', views.UserList.as_view()),
