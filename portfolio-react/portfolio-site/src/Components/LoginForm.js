@@ -1,4 +1,4 @@
-function LoginForm() {
+function LoginForm({setIsAuthenticated, setAuthToken}) {
 
     function handleSubmit(e) {
         // Prevent the browser from reloading the page
@@ -17,8 +17,12 @@ function LoginForm() {
                 method: form.method,
                 body: JSON.stringify(formJson)
             })
-        .then((res) => res.json())
-        .then((jsonResp) => console.log(jsonResp))
+        .then((res) => res.json() )
+        .then((jsonResp) => {
+            console.log(jsonResp);
+            setAuthToken(jsonResp.token);
+            setIsAuthenticated(true);
+        })
       }
 
     return (
