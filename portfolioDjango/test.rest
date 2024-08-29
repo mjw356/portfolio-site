@@ -20,6 +20,7 @@ Authorization: Token 650d817c335fe15bf5e23aebbc146e9284b9b387
 
 GET http://localhost:8000/posts/
 Content-Type: application/json
+Authorization: Token 650d817c335fe15bf5e23aebbc146e9284b9b387
 
 ###
 
@@ -27,4 +28,18 @@ POST http://localhost:8000/posts/
 Content-Type: application/json
 Authorization: Token 650d817c335fe15bf5e23aebbc146e9284b9b387
 
-{"title": "new post", "body": "hello2u", "categories": [1]}
+{"title": "new post", "body": "hello2u", "categories": []}
+
+###
+
+PUT http://localhost:8000/posts/10/
+Content-Type: application/json
+Authorization: Token 650d817c335fe15bf5e23aebbc146e9284b9b387
+
+{"title": "updated post", "body": "updated body", "categories": []}
+
+###
+
+DELETE http://localhost:8000/posts/7/
+Content-Type: application/json
+Authorization: Token 650d817c335fe15bf5e23ae6e9284b9b387
