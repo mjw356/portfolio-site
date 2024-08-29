@@ -16,9 +16,16 @@ class CategoryList(generics.ListCreateAPIView):
         serializer.save(owner=self.request.user)
 
 class PostList(generics.ListCreateAPIView):
-    queryset = Post.objects.all()
+    # queryset = Post.objects.all()
     serializer_class = serializers.PostSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+
+    def get_queryset(self):
+        user = self.request.user
+        if(user.is_authenticated):
+            return Post.objects.filter(owner=user)
+        else:
+            return Post.objects.filter(isPublished=True)
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)

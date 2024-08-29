@@ -27,6 +27,11 @@ function BlogAdminTableRows({posts, setPosts, authToken}){
         changedBlogItem.id == "new" ? CreateNewPost(changedBlogItem) : UpdateExistingPost(changedBlogItem);
     }
 
+    function HandlePublishing(blogItem){
+        blogItem.isPublished = !blogItem.isPublished;
+        UpdateExistingPost(blogItem);
+    }
+
     function UpdateExistingPost(changedBlogItem){
         let url = `http://localhost:8000/posts/${changedBlogItem.id}/`;
         let method = "PUT"
@@ -35,7 +40,7 @@ function BlogAdminTableRows({posts, setPosts, authToken}){
             {
                 headers: new Headers({'content-type': 'application/json', 'Authorization': 'Token ' + authToken}),
                 method: method,
-                body: JSON.stringify({"title": changedBlogItem.title, "body": changedBlogItem.body, "categories": changedBlogItem.categories})
+                body: JSON.stringify({"title": changedBlogItem.title, "body": changedBlogItem.body, "isPublished": changedBlogItem.isPublished, "categories": changedBlogItem.categories})
             })
         .then((res) => {
             if(res.status == 200){
@@ -66,7 +71,6 @@ function BlogAdminTableRows({posts, setPosts, authToken}){
             }
         })
         .then((json) => {
-            console.log(json);
             const newPostState = posts.slice();
             newPostState.shift();
             newPostState.push(json);
@@ -90,7 +94,6 @@ function BlogAdminTableRows({posts, setPosts, authToken}){
     }
 
     const tableRows = posts.map((blogItem) => {
-        console.log(blogItem);
         return (
             <>
                 <tr key={blogItem.id}>
@@ -113,7 +116,7 @@ function BlogAdminTableRows({posts, setPosts, authToken}){
                             <button type="button" onClick={() => SaveChanges(blogItem)} className="btn btn-success mr-1">Save Changes</button> :
                             <button type="button" onClick={() => MakeFieldsEditable(blogItem.id)} className="btn btn-warning mr-1">Edit</button>
                         }
-                        <button type="button" className="btn btn-primary mr-1">Post</button>
+                        <button type="button" className="btn btn-primary mr-1" onClick={() => HandlePublishing(blogItem)}>{blogItem.isPublished ? "UnPublish" : "Publish"}</button>
                         <button type="button" className="btn btn-danger mr-1" onClick={() => HandleDeletePost(blogItem.id)}>Delete</button>
                     </td>
                 </tr>

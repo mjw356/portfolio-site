@@ -36,7 +36,7 @@ PUT http://localhost:8000/posts/10/
 Content-Type: application/json
 Authorization: Token 650d817c335fe15bf5e23aebbc146e9284b9b387
 
-{"title": "updated post", "body": "updated body", "categories": []}
+{"title": "updated post", "body": "updated body", "isPublished": true, "categories": []}
 
 ###
 
