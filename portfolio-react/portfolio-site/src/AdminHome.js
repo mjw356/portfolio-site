@@ -1,7 +1,6 @@
 import Container from 'react-bootstrap/Container';
 import LoginForm from './Components/LoginForm';
 import AdminPanel from './Components/AdminPanel';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState } from 'react';
 
 function AdminHome() {

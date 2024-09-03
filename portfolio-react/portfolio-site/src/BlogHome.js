@@ -1,19 +1,40 @@
-// import './App.css';
 import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import Header from './Components/Header'
-import 'bootstrap/dist/css/bootstrap.min.css';
+import { useEffect, useState } from 'react';
+import BlogListItem from './Components/BlogListItem';
+import Row from 'react-bootstrap/esm/Row';
+import Col from 'react-bootstrap/esm/Col';
 
 function BlogHome() {
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    // this will fetch the blog posts only on the first time the component loads
+    fetch('http://localhost:8000/posts/',
+        {
+            headers: new Headers({'content-type': 'application/json'}),
+            method: "GET"
+        })
+    .then((res) => { return res.json(); })
+    .then((jsonResp) => {
+        setPosts(jsonResp.results);
+    })
+  }, [])
+
   return (
     <Container>
       <Header />
-      <Row>
-        <Col md={6}>
-          <h1>THIS IS THE BLOG HOME</h1>
+      <Row className="justify-content-center mb-5">
+        <Col className='col-3 border-bottom border-3 text-center'>
+          <h1 className='display-1'>entries.</h1>        
         </Col>
       </Row>
+      {
+        posts.map((blogItem) => {
+          console.log(blogItem);
+          return <BlogListItem blogItem={blogItem} />
+        })
+      }
     </Container>
   );
 }

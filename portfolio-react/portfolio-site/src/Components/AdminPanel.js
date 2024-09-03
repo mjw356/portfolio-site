@@ -1,10 +1,6 @@
-// import '../App.css';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState, useEffect } from "react";
-import { Button } from 'bootstrap';
-import { json } from 'react-router';
 import BlogAdminTable from './BlogAdminTable';
 
 function AdminPanel(props) {
