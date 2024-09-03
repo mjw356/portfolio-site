@@ -7,7 +7,7 @@ class PostSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Post
-        fields = ['id', 'title', 'body', 'owner', 'isPublished', 'categories']
+        fields = ['id', 'created', 'title', 'body', 'owner', 'isPublished', 'categories']
 
 class UserSerializer(serializers.ModelSerializer):
     posts = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
@@ -35,3 +35,6 @@ class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
         fields = ['id', 'owner', 'name', 'posts']
+    
+    def __str__(self):
+        return self.name

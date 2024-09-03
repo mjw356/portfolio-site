@@ -112,12 +112,22 @@ function BlogAdminTableRows({posts, setPosts, authToken}){
                     </td>
                     <td>{ blogItem.owner }</td>
                     <td>
-                        { blogItem.hasChanged ? 
-                            <button type="button" onClick={() => SaveChanges(blogItem)} className="btn btn-success mr-1">Save Changes</button> :
-                            <button type="button" onClick={() => MakeFieldsEditable(blogItem.id)} className="btn btn-warning mr-1">Edit</button>
+                        { blogItem.isEditable ?
+                            <Form.Select
+                                onChange={HandleChange}
+                            ></Form.Select>  :
+                            blogItem.title
                         }
-                        <button type="button" className="btn btn-primary mr-1" onClick={() => HandlePublishing(blogItem)}>{blogItem.isPublished ? "UnPublish" : "Publish"}</button>
-                        <button type="button" className="btn btn-danger mr-1" onClick={() => HandleDeletePost(blogItem.id)}>Delete</button>
+                    </td>
+                    <td>
+                        <div className='btn-group'>
+                            { blogItem.hasChanged ? 
+                                <button type="button" onClick={() => SaveChanges(blogItem)} className="btn btn-sm btn-success mr-1">Save Changes</button> :
+                                <button type="button" onClick={() => MakeFieldsEditable(blogItem.id)} className="btn btn-sm btn-warning mr-1">Edit</button>
+                            }
+                            <button type="button" className="btn btn-sm btn-primary mr-1" onClick={() => HandlePublishing(blogItem)}>{blogItem.isPublished ? "UnPublish" : "Publish"}</button>
+                            <button type="button" className="btn btn-sm btn-danger mr-1" onClick={() => HandleDeletePost(blogItem.id)}>Delete</button>
+                        </div>
                     </td>
                 </tr>
                 <tr>
