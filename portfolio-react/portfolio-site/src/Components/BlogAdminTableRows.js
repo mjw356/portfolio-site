@@ -1,6 +1,41 @@
 import Form from 'react-bootstrap/Form';
+import CategorySelector from './CategorySelector';
+import { useState, useEffect } from 'react';
+import CategoriesContainer from './CategoriesContainer';
 
 function BlogAdminTableRows({posts, setPosts, authToken}){
+    const [categories, setCategories] = useState([]);
+
+    // get a list of the current category objects upon load
+    useEffect(() => {
+        // this will fetch the blog posts only on the first time the component loads
+        let url = 'http://localhost:8000/categories/';
+        FetchCategories(url, []);
+      }, [])
+
+    function FetchCategories(url, previousCategories){
+        fetch(url,
+            {
+                headers: new Headers({'content-type': 'application/json'}),
+                method: "GET"
+            })
+        .then((res) => { return res.json(); })
+        .then((jsonResp) => {
+            console.log(jsonResp);
+            let newCategories = previousCategories.slice();
+            jsonResp.results.forEach(element => {
+                let index = newCategories.findIndex(category => category.id == element.id);
+                if(index == -1) {
+                    newCategories.push(element);
+                }
+            });
+            if(jsonResp.next){
+                FetchCategories(jsonResp.next, newCategories);
+            } else {
+                setCategories(newCategories);
+            }
+        })
+    }
 
     function MakeFieldsEditable(id){
         console.log(`${id} is now editable`);
@@ -112,11 +147,21 @@ function BlogAdminTableRows({posts, setPosts, authToken}){
                     </td>
                     <td>{ blogItem.owner }</td>
                     <td>
+                        <CategoriesContainer
+                            blogItem={blogItem}
+                            categories={categories}
+                            posts={posts}
+                            setPosts={setPosts}
+                        />
                         { blogItem.isEditable ?
-                            <Form.Select
-                                onChange={HandleChange}
-                            ></Form.Select>  :
-                            blogItem.title
+                            <CategorySelector
+                                blogItem={blogItem}
+                                posts={posts}
+                                setPosts={setPosts}
+                                categories={categories}
+                                setCategories={setCategories}
+                                authToken={authToken}
+                            /> : ""
                         }
                     </td>
                     <td>
