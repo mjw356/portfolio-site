@@ -4,9 +4,25 @@ import Image from 'react-bootstrap/Image';
 
 function Header() {
   return (
-    <Row className="align-items-center py-5">
+    <Row className="py-5">
         <Col className='col-2'>
             <Image src="http://localhost:3000/roastingmarshmallows-100.png" fluid />
+        </Col>
+        <Col className="align-self-end text-end my-auto">
+        <strong>
+        <a href='/'
+            className='link-secondary link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover'>
+              home
+          </a> &nbsp;|&nbsp; 
+          <a href="portfolio"
+            className='link-secondary link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover'>
+              portfolio
+          </a> &nbsp;|&nbsp; 
+          <a href='blog'
+            className='link-secondary link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover'>
+              blog
+          </a>
+        </strong>
         </Col>
     </Row>
   );

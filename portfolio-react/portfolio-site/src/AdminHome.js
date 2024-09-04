@@ -2,6 +2,7 @@ import Container from 'react-bootstrap/Container';
 import LoginForm from './Components/LoginForm';
 import AdminPanel from './Components/AdminPanel';
 import { useState } from 'react';
+import Header from './Components/Header';
 
 function AdminHome() {
   const [authToken, setAuthToken] = useState("");
@@ -21,6 +22,7 @@ function AdminHome() {
 
   return (
     <Container className="h-100">
+      <Header />
       <AdminGateway />
     </Container>
   );

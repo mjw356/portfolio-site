@@ -21,9 +21,7 @@ function PortfolioHome() {
         })
     .then((res) => { return res.json(); })
     .then((jsonResp) => {
-        console.log(jsonResp);
         let portfolioResults = jsonResp.results.filter((post) => post.categories.includes(portfolioCatId));
-        console.log(portfolioResults)
         setPosts(portfolioResults);
     })
   }, [])
