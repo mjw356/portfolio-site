@@ -7,6 +7,7 @@ import Col from 'react-bootstrap/esm/Col';
 
 function BlogHome() {
   const [posts, setPosts] = useState([]);
+  const portfolioCatId = 22;
 
   useEffect(() => {
     // this will fetch the blog posts only on the first time the component loads
@@ -17,7 +18,8 @@ function BlogHome() {
         })
     .then((res) => { return res.json(); })
     .then((jsonResp) => {
-        setPosts(jsonResp.results);
+        let portfolioResults = jsonResp.results.filter((post) => !post.categories.includes(portfolioCatId));
+        setPosts(portfolioResults);
     })
   }, [])
 

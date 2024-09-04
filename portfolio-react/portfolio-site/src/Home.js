@@ -15,7 +15,7 @@ function Home() {
                 <p className='lead'>portfolio and blog of mike.</p>
                 <p className='font-size-lg'>
                   <strong>
-                  <a href="#" className='link-secondary link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover'>portfolio</a> | <a href='blog' className='link-secondary link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover'>blog</a>
+                  <a href="portfolio" className='link-secondary link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover'>portfolio</a> | <a href='blog' className='link-secondary link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover'>blog</a>
                   </strong>
                 </p>
             </Col>

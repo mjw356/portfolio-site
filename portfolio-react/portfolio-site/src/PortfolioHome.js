@@ -3,15 +3,44 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Header from './Components/Header';
+import { useEffect, useState } from 'react';
+import PortfolioListItem from './Components/PortfolioListItem';
 
 function PortfolioHome() {
+
+  const [posts, setPosts] = useState([]);
+  const portfolioCatId = 22;
+
+  useEffect(() => {
+    // this will fetch the blog posts only on the first time the component loads
+    fetch('http://localhost:8000/posts/',
+        {
+            headers: new Headers({'content-type': 'application/json'}),
+            method: "GET"
+        })
+    .then((res) => { return res.json(); })
+    .then((jsonResp) => {
+        console.log(jsonResp);
+        let portfolioResults = jsonResp.results.filter((post) => post.categories.includes(portfolioCatId));
+        console.log(portfolioResults)
+        setPosts(portfolioResults);
+    })
+  }, [])
+
   return (
     <Container>
-      <Row>
-        <Col md={6}>
-          <h1>THIS IS THE PORTFOLIO HOME</h1>
+      <Header />
+      <Row className="justify-content-center mb-5">
+        <Col className='col-3 border-bottom border-3 text-center'>
+          <h1 className='display-1'>portfolio.</h1>        
         </Col>
       </Row>
+      {
+        posts.map((post) => {
+          return <PortfolioListItem portfolioItem={post} />
+        })
+      }
     </Container>
   );
 }

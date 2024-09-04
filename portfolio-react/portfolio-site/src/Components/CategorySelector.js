@@ -56,7 +56,6 @@ function CategorySelector({blogItem, posts, setPosts, categories, setCategories,
         setCurrentCat(e.target.value);
     }
 
-    console.log(categories);
     const categoryOptions = categories.map((category) => {
         return <option value={category.id}>{category.name}</option>
     })

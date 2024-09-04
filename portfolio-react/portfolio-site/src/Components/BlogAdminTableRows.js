@@ -75,7 +75,12 @@ function BlogAdminTableRows({posts, setPosts, authToken}){
             {
                 headers: new Headers({'content-type': 'application/json', 'Authorization': 'Token ' + authToken}),
                 method: method,
-                body: JSON.stringify({"title": changedBlogItem.title, "body": changedBlogItem.body, "isPublished": changedBlogItem.isPublished, "categories": changedBlogItem.categories})
+                body: JSON.stringify({
+                    "title": changedBlogItem.title,
+                    "body": changedBlogItem.body,
+                    "isPublished": changedBlogItem.isPublished,
+                    "featuredImage": changedBlogItem.featuredImage,
+                    "categories": changedBlogItem.categories})
             })
         .then((res) => {
             if(res.status == 200){
