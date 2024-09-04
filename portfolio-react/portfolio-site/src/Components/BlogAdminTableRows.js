@@ -146,6 +146,18 @@ function BlogAdminTableRows({posts, setPosts, authToken}){
                         }
                     </td>
                     <td>{ blogItem.owner }</td>
+                    <td>{ blogItem.isEditable ?
+                            <Form.Control
+                                type="text"
+                                name="featuredImage"
+                                key={blogItem.id}
+                                data-key={blogItem.id}
+                                value={blogItem.featuredImage}
+                                onChange={HandleChange}
+                            />  :
+                            blogItem.featuredImage
+                        }
+                    </td>
                     <td>
                         <CategoriesContainer
                             blogItem={blogItem}

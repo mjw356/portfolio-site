@@ -16,6 +16,7 @@ function BlogAdminTable({posts, setPosts, authToken}){
                     <th scope="col">id</th>
                     <th scope="col">title</th>
                     <th scope="col">author</th>
+                    <th scope="col">featured image</th>
                     <th scope="col">categories</th>
                     <th scope="col">
                         <button type="button" className="btn btn-success btn-sm mx-auto" onClick={HandleCreatePost}>Create New Post</button>
