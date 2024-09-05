@@ -8,7 +8,7 @@ Content-Type: application/json
 POST http://localhost:8000/login/
 Content-Type: application/json
 
-{"username": "admin", "password": ""}
+{"username": "admin", "password": "password"}
 
 ###
 
@@ -37,11 +37,11 @@ Authorization: Token 9e6b927750a11cf47715fd9a22851cb2301674e6
 
 ###
 
-PUT http://localhost:8000/posts/14/
+PUT http://localhost:8000/posts/11/
 Content-Type: application/json
-Authorization: Token 9e6b927750a11cf47715fd9a22851cb2301674e6
+Authorization: Token 650d817c335fe15bf5e23aebbc146e9284b9b387
 
-{"title": "post for test user 22", "body": "updated body", "isPublished": true, "categories": []}
+{"title": "test post to add category", "body": "updated category", "isPublished": true, "categories": [2]}
 
 ###
 
@@ -56,9 +56,9 @@ POST http://localhost:8000/categories/
 Content-Type: application/json
 Authorization: Token 9e6b927750a11cf47715fd9a22851cb2301674e6
 
-{"name": "programming"}
+{"name": "another test"}
 
 ###
 
-GET http://localhost:8000/categories/
+GET http://localhost:8000/categories/?page=3
 Content-Type: application/json

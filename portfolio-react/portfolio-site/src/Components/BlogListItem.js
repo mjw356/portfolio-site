@@ -3,11 +3,27 @@ import Col from 'react-bootstrap/esm/Col';
 import { Link } from 'react-router-dom';
 
 function BlogListItem({blogItem}) {
+
+    function DateFormatter(){
+        console.log(blogItem.published);
+        let d = new Date(blogItem.published);
+        const month = d.toLocaleString('en-us', { month: 'short' });
+        const day = d.toLocaleString('en-us', { day: '2-digit' });
+
+        return (
+            <div>
+                <p className='fs-5 m-0 text-uppercase'>{month}</p>
+                <p className='fs-2 m-0'>{day}</p>
+            </div>
+        )
+    }
+
     return (
         <Row className="mb-3">
             <Col className='col-1 bg-light offset-2 text-center'>
-                <p className='fs-5 m-0'>AUG</p>
-                <p className='fs-2 m-0'>29</p>
+
+                <DateFormatter />
+
             </Col>
             <Col className='col-7 my-auto'>
                 <Link
