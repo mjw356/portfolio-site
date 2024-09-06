@@ -13,6 +13,10 @@ class Post(models.Model):
     class Meta:
         ordering = ['created']
 
+class ImageUploads(models.Model):
+    image = models.FileField(upload_to="images/", null=True)
+    uploaded_at = models.DateTimeField(auto_now_add=True)
+
 class Category(models.Model):
     name = models.CharField(max_length=120, blank=False, default='')
     owner = models.ForeignKey('auth.User', related_name='categories', on_delete=models.CASCADE)

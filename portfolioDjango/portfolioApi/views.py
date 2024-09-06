@@ -3,6 +3,7 @@ from portfolioApi import serializers
 from rest_framework import generics, permissions, response, status
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.authtoken.models import Token
+from rest_framework.parsers import FileUploadParser
 from portfolioApi.permissions import IsOwnerOrReadOnly
 from portfolioApi.models import Post, Category
 from django.shortcuts import get_object_or_404
@@ -76,3 +77,13 @@ class TokenTest(generics.ListAPIView):
 
     def get(self, request):
         return response.Response({"user": request.user.username})
+
+class UploadImageView(generics.CreateAPIView):
+    serializer_class = serializers.ImageUploadSerializer
+    parser_classes = [FileUploadParser,]
+    authentication_classes = [TokenAuthentication]
+
+    def perform_create(self, serializer):
+        print(self.request.FILES['file'])
+        file_obj = self.request.FILES['file']
+        serializer.save(image=file_obj)    

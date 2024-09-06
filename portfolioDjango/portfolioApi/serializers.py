@@ -1,6 +1,11 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
-from portfolioApi.models import Post, Category
+from portfolioApi.models import Post, Category, ImageUploads
+
+class ImageUploadSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ImageUploads
+        fields = ['image', 'uploaded_at']
 
 class PostSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')

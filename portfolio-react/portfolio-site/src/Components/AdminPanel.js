@@ -2,6 +2,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { useState, useEffect } from "react";
 import BlogAdminTable from './BlogAdminTable';
+import FileUpload from './FileUpload';
 
 function AdminPanel(props) {
     const [posts, setPosts] = useState([]);
@@ -21,11 +22,18 @@ function AdminPanel(props) {
     }, [])
 
     return (
-        <Row className="h-100">
-            <Col className="my-auto">
-                <BlogAdminTable posts={posts} setPosts={setPosts} authToken={props.authToken}/>
-            </Col>
-        </Row>
+        <>
+            <Row>
+                <Col>
+                    <FileUpload authToken={props.authToken}/>
+                </Col>
+            </Row>
+            <Row>
+                <Col className="my-auto">
+                    <BlogAdminTable posts={posts} setPosts={setPosts} authToken={props.authToken}/>
+                </Col>
+            </Row>
+        </>
     );
 }
 

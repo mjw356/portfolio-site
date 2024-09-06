@@ -2,6 +2,8 @@ import Form from 'react-bootstrap/Form';
 import CategorySelector from './CategorySelector';
 import { useState, useEffect } from 'react';
 import CategoriesContainer from './CategoriesContainer';
+import 'draft-js/dist/Draft.css';
+
 
 function BlogAdminTableRows({posts, setPosts, authToken}){
     const [categories, setCategories] = useState([]);

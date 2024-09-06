@@ -11,6 +11,7 @@ from portfolioApi import views
 # Additionally, we include login URLs for the browsable API.
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path('imageupload/', views.UploadImageView.as_view()),
     path("signup/", views.SignUp.as_view()),
     path("login/", views.Login.as_view()),
     path("tokentest/", views.TokenTest.as_view()),

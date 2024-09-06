@@ -141,3 +141,5 @@ GitHub.sublime-settings
 .history
 
 node_modules/
+
+build/
