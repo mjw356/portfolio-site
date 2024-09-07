@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-!v(t4*)wszf3e8tpr5zn!use02gt$+b+qf)gn*kgnlg5phx4b7
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['portfoliobackend']
 
 REST_FRAMEWORK = {
     'DEFAULT_RENDERER_CLASSES': [
@@ -93,7 +93,7 @@ WSGI_APPLICATION = 'portfolioDjango.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': BASE_DIR / 'database' / 'db.sqlite3',
     }
 }
 
