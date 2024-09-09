@@ -11,4 +11,4 @@ COPY media/images/ /media/images/
 # remove the default conf
 RUN mv /etc/nginx/conf.d/default.conf /etc/nginx/conf.d/default.conf.disabled
 
-EXPOSE 3000 8000
+EXPOSE 80 443
