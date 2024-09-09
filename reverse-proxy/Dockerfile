@@ -6,6 +6,7 @@ COPY nginx.conf /etc/nginx/
 COPY index.html /usr/share/nginx/html/
 COPY backendserver.conf /etc/nginx/conf.d/
 COPY frontendserver.conf /etc/nginx/conf.d/
+COPY staticserver.conf /etc/nginx/conf.d/
 COPY media/images/ /media/images/
 
 # remove the default conf
