@@ -2,7 +2,7 @@ import { ChangeEvent, useState } from 'react';
 import { Form } from 'react-bootstrap';
 
 function FileUpload(authToken) {
-    const backend = process.env.BACKEND;
+    const backend = process.env.REACT_APP_BACKEND;
     const [file, setFile] = useState();
 
     const handleFileChange = (e) => {

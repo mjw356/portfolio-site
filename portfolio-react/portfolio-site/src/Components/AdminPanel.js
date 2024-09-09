@@ -5,7 +5,7 @@ import BlogAdminTable from './BlogAdminTable';
 import FileUpload from './FileUpload';
 
 function AdminPanel(props) {
-    const backend = process.env.BACKEND;
+    const backend = process.env.REACT_APP_BACKEND;
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {

@@ -3,7 +3,7 @@ import Col from 'react-bootstrap/Col';
 import Image from 'react-bootstrap/Image';
 
 function Header() {
-  const static_base = process.env.STATIC_URL;
+  const static_base = process.env.REACT_APP_STATIC_URL;
   return (
     <Row className="py-5">
         <Col className='col-2'>

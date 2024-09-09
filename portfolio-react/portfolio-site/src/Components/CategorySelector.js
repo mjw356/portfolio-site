@@ -29,7 +29,7 @@ function CategorySelector({blogItem, posts, setPosts, categories, setCategories,
     }
 
     function CreateNewCategory(){
-        const backend = process.env.BACKEND;
+        const backend = process.env.REACT_APP_BACKEND;
         fetch(backend + '/categories/',
             {
                 headers: new Headers({'content-type': 'application/json', 'Authorization': 'Token ' + authToken}),

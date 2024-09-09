@@ -7,7 +7,7 @@ import Col from 'react-bootstrap/esm/Col';
 
 function BlogHome() {
 
-  const backend = process.env.BACKEND;
+  const backend = process.env.REACT_APP_BACKEND;
 
   const [posts, setPosts] = useState([]);
   const portfolioCatId = 22;

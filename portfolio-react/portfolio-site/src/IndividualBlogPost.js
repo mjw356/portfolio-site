@@ -8,7 +8,7 @@ import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 function IndividualBlogPost() {
-  const backend = process.env.BACKEND;
+  const backend = process.env.REACT_APP_BACKEND;
   const [blogItem, setBlogItem] = useState({title: "", owner: "", body: ""});
   let blogId = useParams();
   console.log(blogId);

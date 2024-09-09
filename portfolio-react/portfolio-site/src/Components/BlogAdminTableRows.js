@@ -6,7 +6,7 @@ import 'draft-js/dist/Draft.css';
 
 
 function BlogAdminTableRows({posts, setPosts, authToken}){
-    const backend = process.env.BACKEND;
+    const backend = process.env.REACT_APP_BACKEND;
     const [categories, setCategories] = useState([]);
 
     // get a list of the current category objects upon load
