@@ -1,21 +1,23 @@
 import { ChangeEvent, useState } from 'react';
+import { Form } from 'react-bootstrap';
 
 function FileUpload(authToken) {
-  const [file, setFile] = useState();
+    const backend = process.env.BACKEND;
+    const [file, setFile] = useState();
 
-  const handleFileChange = (e) => {
-    if (e.target.files) {
-      setFile(e.target.files[0]);
-    }
-  };
+    const handleFileChange = (e) => {
+        if (e.target.files) {
+        setFile(e.target.files[0]);
+        }
+    };
 
-  const handleUploadClick = () => {
-    if (!file) {
-      return;
-    }
+    const handleUploadClick = () => {
+        if (!file) {
+        return;
+        }
 
     // 👇 Uploading the file using the fetch API to the server
-    fetch('http://localhost:8000/imageupload/', {
+    fetch(backend + '/imageupload/', {
       // 👇 Set headers manually for single file upload
       headers: new Headers({
         'Content-Disposition': `attachment; filename="${file.name}"`,

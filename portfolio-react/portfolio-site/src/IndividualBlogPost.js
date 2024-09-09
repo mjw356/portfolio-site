@@ -8,13 +8,14 @@ import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 function IndividualBlogPost() {
+  const backend = process.env.BACKEND;
   const [blogItem, setBlogItem] = useState({title: "", owner: "", body: ""});
   let blogId = useParams();
   console.log(blogId);
 
   useEffect(() => {
       // this will fetch the blog post only on the first time the component loads
-      fetch('http://localhost:8000/posts/' + blogId.id,
+      fetch(backend + '/posts/' + blogId.id,
         {
             headers: new Headers({'content-type': 'application/json'}),
             method: "GET"

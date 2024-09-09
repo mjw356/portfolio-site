@@ -6,12 +6,13 @@ import 'draft-js/dist/Draft.css';
 
 
 function BlogAdminTableRows({posts, setPosts, authToken}){
+    const backend = process.env.BACKEND;
     const [categories, setCategories] = useState([]);
 
     // get a list of the current category objects upon load
     useEffect(() => {
         // this will fetch the blog posts only on the first time the component loads
-        let url = 'http://localhost:8000/categories/';
+        let url = backend + '/categories/';
         FetchCategories(url, []);
       }, [])
 
@@ -70,7 +71,7 @@ function BlogAdminTableRows({posts, setPosts, authToken}){
     }
 
     function UpdateExistingPost(changedBlogItem){
-        let url = `http://localhost:8000/posts/${changedBlogItem.id}/`;
+        let url = `${backend}/posts/${changedBlogItem.id}/`;
         let method = "PUT"
 
         fetch(url,
@@ -98,7 +99,7 @@ function BlogAdminTableRows({posts, setPosts, authToken}){
     }
 
     function CreateNewPost(blogItem){
-        let url = "http://localhost:8000/posts/";
+        let url = backend + "/posts/";
         let method = "POST";
 
         fetch(url,
@@ -121,7 +122,7 @@ function BlogAdminTableRows({posts, setPosts, authToken}){
     }
 
     function HandleDeletePost(postId){
-        fetch(`http://localhost:8000/posts/${postId}/`,
+        fetch(`${backend}/posts/${postId}/`,
             {
                 headers: new Headers({'content-type': 'application/json', 'Authorization': 'Token ' + authToken}),
                 method: "DELETE"

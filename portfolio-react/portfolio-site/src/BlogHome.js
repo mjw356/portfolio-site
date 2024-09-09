@@ -6,12 +6,15 @@ import Row from 'react-bootstrap/esm/Row';
 import Col from 'react-bootstrap/esm/Col';
 
 function BlogHome() {
+
+  const backend = process.env.BACKEND;
+
   const [posts, setPosts] = useState([]);
   const portfolioCatId = 22;
 
   useEffect(() => {
     // this will fetch the blog posts only on the first time the component loads
-    fetch('http://localhost:8000/posts/',
+    fetch(backend + '/posts/',
         {
             headers: new Headers({'content-type': 'application/json'}),
             method: "GET"

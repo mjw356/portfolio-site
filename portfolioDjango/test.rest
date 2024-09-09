@@ -1,20 +1,20 @@
 POST http://localhost:8000/signup/
 Content-Type: application/json
 
-{"username": "admin","email": "myawesomeemail@wolfontheweb.com","password": "pass1234!"}
+{"username": "me","email": "myawesomeemail@wolfontheweb.com","password": "pass1234"}
 
 ###
 
 POST http://localhost:8000/login/
 Content-Type: application/json
 
-{"username": "admin", "password": "password"}
+{"username": "me", "password": "pass1234"}
 
 ###
 
 GET  http://localhost:8000/tokentest/
 Content-Type: application/json
-Authorization: Token 650d817c335fe15bf5e23aebbc146e9284b9b387
+Authorization: Token 457dbd98755f9403a6ee88063f73e54b2d3e83ba
 
 ###
 
@@ -31,7 +31,7 @@ Content-Type: application/json
 
 POST http://localhost:8000/posts/
 Content-Type: application/json
-Authorization: Token 9e6b927750a11cf47715fd9a22851cb2301674e6
+Authorization: Token 457dbd98755f9403a6ee88063f73e54b2d3e83ba
 
 {"title": "post for test user 22", "body": "hello2u", "categories": []}
 

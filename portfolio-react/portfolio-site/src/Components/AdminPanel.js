@@ -5,11 +5,12 @@ import BlogAdminTable from './BlogAdminTable';
 import FileUpload from './FileUpload';
 
 function AdminPanel(props) {
+    const backend = process.env.BACKEND;
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
         // this will fetch the blog posts only on the first time the component loads
-        fetch('http://localhost:8000/posts/',
+        fetch(backend + '/posts/',
             {
                 headers: new Headers({'content-type': 'application/json', 'Authorization': 'Token ' + props.authToken}),
                 method: "GET"

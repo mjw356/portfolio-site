@@ -8,13 +8,13 @@ import { useEffect, useState } from 'react';
 import PortfolioListItem from './Components/PortfolioListItem';
 
 function PortfolioHome() {
-
+  const backend = process.env.BACKEND;
   const [posts, setPosts] = useState([]);
   const portfolioCatId = 22;
 
   useEffect(() => {
     // this will fetch the blog posts only on the first time the component loads
-    fetch('http://localhost:8000/posts/',
+    fetch(backend + '/posts/',
         {
             headers: new Headers({'content-type': 'application/json'}),
             method: "GET"

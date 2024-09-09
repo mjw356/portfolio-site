@@ -29,8 +29,8 @@ function CategorySelector({blogItem, posts, setPosts, categories, setCategories,
     }
 
     function CreateNewCategory(){
-        console.log(`create new cat ${newCatName}`)
-        fetch('http://localhost:8000/categories/',
+        const backend = process.env.BACKEND;
+        fetch(backend + '/categories/',
             {
                 headers: new Headers({'content-type': 'application/json', 'Authorization': 'Token ' + authToken}),
                 method: "POST",

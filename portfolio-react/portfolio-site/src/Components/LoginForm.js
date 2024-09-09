@@ -1,4 +1,5 @@
 function LoginForm({setIsAuthenticated, setAuthToken}) {
+    const backend = process.env.BACKEND;
 
     function handleSubmit(e) {
         // Prevent the browser from reloading the page
@@ -11,7 +12,7 @@ function LoginForm({setIsAuthenticated, setAuthToken}) {
     
         const formJson = Object.fromEntries(formData.entries())
         // You can pass formData as a fetch body directly:
-        fetch('http://localhost:8000/login/',
+        fetch(backend + '/login/',
             {
                 headers: new Headers({'content-type': 'application/json'}),
                 method: form.method,
