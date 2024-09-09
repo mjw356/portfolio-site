@@ -145,3 +145,5 @@ node_modules/
 build/
 
 secret_key.txt
+
+dockerimages/
