@@ -143,3 +143,5 @@ GitHub.sublime-settings
 node_modules/
 
 build/
+
+secret_key.txt
