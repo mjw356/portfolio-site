@@ -40,7 +40,6 @@ function CategorySelector({blogItem, posts, setPosts, categories, setCategories,
         .then((jsonResp) => {
             let newCategories = categories.slice();
             newCategories.push(jsonResp)
-            console.log(jsonResp);
             setCategories(newCategories);
             setCurrentCat(jsonResp.id);
             AddNewCategoryToBlogItem(jsonResp.id);

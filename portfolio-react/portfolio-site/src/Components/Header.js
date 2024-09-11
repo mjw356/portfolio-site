@@ -7,7 +7,7 @@ function Header() {
   return (
     <Row className="py-5">
         <Col className='col-2'>
-            <Image src={{static_base} + "/roastingmarshmallows-100.png"} fluid />
+            <Image src={static_base + "/roastingmarshmallows-100.png"} fluid />
         </Col>
         <Col className="align-self-end text-end my-auto">
         <strong>

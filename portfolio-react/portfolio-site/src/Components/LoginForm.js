@@ -1,5 +1,6 @@
 function LoginForm({setIsAuthenticated, setAuthToken}) {
     const backend = process.env.REACT_APP_BACKEND;
+    console.log(`backend ${backend}`);
 
     function handleSubmit(e) {
         // Prevent the browser from reloading the page

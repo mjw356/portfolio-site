@@ -5,6 +5,7 @@ WORKDIR /frontend/
 COPY public/ /frontend/public
 COPY src/ /frontend/src
 COPY package.json /frontend/
+COPY .env.production /frontend/.env.production
 
 RUN yarn install
 RUN yarn run build

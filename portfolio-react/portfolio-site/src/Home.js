@@ -20,7 +20,7 @@ function Home() {
                 </p>
             </Col>
             <Col className='col-md-6 col-12 text-center'>
-                <Image src="roastingmarshmallows.png" fluid></Image>
+                <Image src="https://static.wolfontheweb.com/roastingmarshmallows.png" fluid></Image>
             </Col>
           </Row>
         </Col>

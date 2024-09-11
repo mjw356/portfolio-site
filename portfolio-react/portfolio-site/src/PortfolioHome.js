@@ -10,7 +10,7 @@ import PortfolioListItem from './Components/PortfolioListItem';
 function PortfolioHome() {
   const backend = process.env.REACT_APP_BACKEND;
   const [posts, setPosts] = useState([]);
-  const portfolioCatId = 22;
+  const portfolioCatId = 1;
 
   useEffect(() => {
     // this will fetch the blog posts only on the first time the component loads
