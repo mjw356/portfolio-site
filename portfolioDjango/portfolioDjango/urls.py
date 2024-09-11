@@ -12,9 +12,7 @@ from portfolioApi import views
 urlpatterns = [
     path("admin/", admin.site.urls),
     path('imageupload/', views.UploadImageView.as_view()),
-    path("signup/", views.SignUp.as_view()),
     path("login/", views.Login.as_view()),
-    path("tokentest/", views.TokenTest.as_view()),
     path('categories/', views.CategoryList.as_view()),
     path('posts/', views.PostList.as_view()),
     path('posts/<int:pk>/', views.PostDetail.as_view()),

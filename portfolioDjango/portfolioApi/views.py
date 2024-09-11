@@ -46,20 +46,6 @@ class UserDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = serializers.UserSerializer
     permission_classes = [permissions.IsAdminUser]
 
-class SignUp(generics.CreateAPIView):
-    queryset = User.objects.all()
-    serializer_class = serializers.UserSerializer
-
-    def post(self, request, *args, **kwargs):
-        serializer = self.get_serializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        self.perform_create(serializer)
-        headers = self.get_success_headers(serializer.data)
-        userResponse = {"username": serializer.data["username"], "email": serializer.data["email"]}
-        userInstance = User.objects.get(username=userResponse["username"])
-        token = Token.objects.create(user=userInstance)
-        return response.Response({"user": userResponse, "token": token.key}, status=status.HTTP_201_CREATED, headers=headers)
-
 class Login(generics.CreateAPIView):
     serializer_class = serializers.UserSerializer
 
@@ -70,13 +56,6 @@ class Login(generics.CreateAPIView):
         token, created = Token.objects.get_or_create(user=user)
         userResponse = {"username": user.username, "email": user.email}
         return response.Response({"user": userResponse, "token": token.key})
-
-class TokenTest(generics.ListAPIView):
-    authentication_classes = [TokenAuthentication]
-    # permission_classes = [permissions.IsAuthenticated]
-
-    def get(self, request):
-        return response.Response({"user": request.user.username})
 
 class UploadImageView(generics.CreateAPIView):
     serializer_class = serializers.ImageUploadSerializer
